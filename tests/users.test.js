@@ -1,7 +1,17 @@
 const request = require("supertest");
 const app = require("../app"); // your Express app
 const User = require("../models/Users.js");
+const config = require("../config/config.js");
+const mongoose = require("mongoose");
+beforeEach(async () => {
+	await mongoose.connect(config.DB_URL);
+});
 
+/* Dropping the database and closing connection after each test. */
+afterEach(async () => {
+	// await mongoose.connection.dropDatabase();
+	await mongoose.connection.close();
+});
 describe("Test the root path", () => {
 	it("It should response the GET method", async () => {
 		const response = await request(app).get("/");
