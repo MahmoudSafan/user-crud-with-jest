@@ -8,6 +8,6 @@ const {
 } = require("../controllers/users");
 
 router.route("/").get(getUsers).post(createUser);
-router.route("/users/:id").get(getUser).put(updateUser).delete(deleteUser);
+router.route("/:id").get(getUser).put(updateUser).delete(deleteUser);
 
 module.exports = router;

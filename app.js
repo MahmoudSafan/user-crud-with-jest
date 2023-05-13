@@ -1,7 +1,6 @@
 const express = require("express");
 const colors = require("colors");
 const path = require("path");
-const cors = require("cors");
 const userRouts = require("./routes/users");
 const { errorHandler } = require("./middleware/errorHandler.js");
 
@@ -16,7 +15,6 @@ app.use(
 );
 
 app.use(express.json());
-app.use(cors());
 
 app.get("/", (req, res) => {
 	res.sendFile(path.join(__dirname, "views", "form.html"));
