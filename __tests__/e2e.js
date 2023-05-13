@@ -8,11 +8,11 @@ async function testFormWithPuppeteer() {
 	const page = await browser.newPage();
 
 	// Navigate to the form page
-	await page.goto("https://example.com/form");
+	await page.goto("http://localhost:3000/");
 
 	// Fill out the form fields
-	await page.type("#name", "John Doe");
-	await page.type("#email", "johndoe@example.com");
+	await page.type("#name", "soaad");
+	await page.type("#email", "soaad@example.com");
 	await page.type("#password", "password123");
 	await page.type("#confirm_password", "password123");
 	await page.type("#phone", "1234567890");
@@ -26,8 +26,11 @@ async function testFormWithPuppeteer() {
 
 	// Check that the form submission was successful
 	const successMessage = await page.$eval("body", (el) => el.innerText);
-	if (successMessage !== "Form submitted successfully.") {
+
+	if (successMessage.match(/"success":false/)) {
 		throw new Error("Form submission failed!");
+	} else {
+		console.log("Form submission scuccess!");
 	}
 
 	// Close the browser

@@ -5,7 +5,10 @@
 	"main": "server.js",
 	"scripts": {
 		"dev": "nodemon server.js",
-		"test": "jest --test-timeout=10000"
+		"test": "jest users.test.js --test-timeout=10000",
+		"test:watch": "jest users.test.js --watch",
+		"test:coverage": "jest users.test.js --coverage",
+		"e2e": "node ./__tests__/e2e.js"
 	},
 	"author": "Soaad Khaled",
 	"license": "ISC",
@@ -13,7 +16,8 @@
 		"colors": "^1.4.0",
 		"dotenv": "^16.0.3",
 		"express": "^4.18.2",
-		"mongoose": "^7.1.1"
+		"mongoose": "^7.1.1",
+		"puppeteer": "^20.2.0"
 	},
 	"devDependencies": {
 		"jest": "^29.5.0",
